@@ -1,0 +1,33 @@
+{
+  "name": "Player Matrix — QBs 2025",
+  "table": "player_season_summary",
+  "version": 1,
+  "filters": {
+    "seasons": [2025],
+    "positions": ["QB"],
+    "teams": [],
+    "min_games": 5,
+    "min_attempts": 100
+  },
+  "columns": [
+    "player_name",
+    "team",
+    "position",
+    "season",
+    "games",
+    "dropbacks",
+    "epa_per_dropback",
+    "pass_success_rate",
+    "cpoe",
+    "sack_rate",
+    "int_rate",
+    "td_rate",
+    "adot",
+    "production_rating",
+    "efficiency_rating",
+    "recent_form_rating"
+  ],
+  "sort_column": "epa_per_dropback",
+  "sort_ascending": false,
+  "notes": "Default view for qualifying QBs in the most recent regular season sorted by EPA per dropback."
+}

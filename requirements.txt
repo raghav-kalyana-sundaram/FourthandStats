@@ -1,0 +1,24 @@
+# NFL data
+nflreadpy==0.1.5
+
+# Storage / query
+duckdb==1.5.2
+pyarrow>=18.0
+
+# Dataframes
+polars==1.40.1
+pandas>=2.2
+
+# UI
+streamlit==1.57.0
+
+# Charts
+plotly==6.7.0
+
+# Config / validation
+pyyaml>=6.0
+pydantic>=2.7
+
+# Utilities
+tqdm>=4.66
+python-dateutil>=2.9

@@ -1,0 +1,69 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache
+
+# Data directories (never commit raw or processed NFL data)
+data/raw/
+data/processed/
+data/cache/
+
+# Exports and logs (generated artifacts)
+exports/
+logs/
+
+# DuckDB files
+*.duckdb
+*.duckdb.wal
+
+# Parquet files
+*.parquet
+
+# Saved views (commit examples/ only)
+saved_views/*.json
+!saved_views/examples/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env*.local
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Mypy cache
+.mypy_cache/
+
+# Ruff cache
+.ruff_cache/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb

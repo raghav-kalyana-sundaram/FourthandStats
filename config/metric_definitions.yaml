@@ -1,0 +1,194 @@
+# Metric definitions — one entry per metric
+# Each entry: name, description, formula, source_table, source_columns, higher_is_better, units, sample_size_caveats
+
+team_metrics:
+  off_epa_per_play:
+    name: "Offensive EPA/Play"
+    description: "Average expected points added per offensive play"
+    formula: "SUM(epa) / COUNT(*) WHERE posteam = team AND play_type IN ('pass','run')"
+    source_table: pbp_raw
+    source_columns: [epa, play_type, posteam]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Stable after ~100 plays; garbage-time plays inflate late-game EPA"
+
+  def_epa_per_play_allowed:
+    name: "Defensive EPA/Play Allowed"
+    description: "Average EPA per play allowed by the defense (lower is better)"
+    formula: "SUM(epa) / COUNT(*) WHERE defteam = team AND play_type IN ('pass','run')"
+    source_table: pbp_raw
+    source_columns: [epa, play_type, defteam]
+    higher_is_better: false
+    units: EPA
+    sample_size_caveats: "Same as offensive EPA; opponent quality not adjusted"
+
+  net_epa_per_play:
+    name: "Net EPA/Play"
+    description: "Offensive EPA/play minus defensive EPA/play allowed"
+    formula: "off_epa_per_play - def_epa_per_play_allowed"
+    source_table: team_season_summary
+    source_columns: [off_epa_per_play, def_epa_per_play_allowed]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: null
+
+  off_success_rate:
+    name: "Offensive Success Rate"
+    description: "% of offensive plays deemed successful by down-and-distance standard"
+    formula: "SUM(success) / COUNT(*) WHERE posteam = team AND play_type IN ('pass','run')"
+    source_table: pbp_raw
+    source_columns: [success, play_type, posteam]
+    higher_is_better: true
+    units: rate
+    sample_size_caveats: "nflverse 'success' column: EPA > 0 on 1st down, 50%+ yards on 2nd, conversion on 3rd/4th"
+
+  def_success_rate_allowed:
+    name: "Defensive Success Rate Allowed"
+    description: "% of opponent plays deemed successful — lower is better"
+    formula: "SUM(success) / COUNT(*) WHERE defteam = team AND play_type IN ('pass','run')"
+    source_table: pbp_raw
+    source_columns: [success, play_type, defteam]
+    higher_is_better: false
+    units: rate
+    sample_size_caveats: null
+
+  explosive_play_rate:
+    name: "Explosive Play Rate (Offense)"
+    description: "% of offensive plays gaining 12+ yards rushing or 16+ yards passing"
+    formula: "SUM(is_explosive) / COUNT(*) WHERE posteam = team"
+    source_table: pbp_raw
+    source_columns: [yards_gained, play_type]
+    higher_is_better: true
+    units: rate
+    sample_size_caveats: "Thresholds: rush ≥12 yds, pass ≥16 yds (nflverse convention)"
+
+  explosive_play_rate_allowed:
+    name: "Explosive Play Rate Allowed (Defense)"
+    description: "% of opponent plays gaining explosive yardage — lower is better"
+    formula: "SUM(is_explosive) / COUNT(*) WHERE defteam = team"
+    source_table: pbp_raw
+    source_columns: [yards_gained, play_type]
+    higher_is_better: false
+    units: rate
+    sample_size_caveats: null
+
+  pass_epa_per_play:
+    name: "Pass EPA/Play (Offense)"
+    description: "Average EPA per dropback (includes sacks)"
+    formula: "SUM(epa) / COUNT(*) WHERE posteam = team AND (pass = 1 OR sack = 1)"
+    source_table: pbp_raw
+    source_columns: [epa, pass, sack, posteam]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Sacks included as pass plays per nflverse convention"
+
+  rush_epa_per_play:
+    name: "Rush EPA/Play (Offense)"
+    description: "Average EPA per rushing attempt"
+    formula: "SUM(epa) / COUNT(*) WHERE posteam = team AND rush = 1"
+    source_table: pbp_raw
+    source_columns: [epa, rush, posteam]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: null
+
+  third_down_success_rate:
+    name: "Third Down Success Rate"
+    description: "% of third downs converted to a first down or touchdown"
+    formula: "SUM(third_down_converted) / COUNT(*) WHERE down = 3 AND posteam = team"
+    source_table: pbp_raw
+    source_columns: [third_down_converted, down, posteam]
+    higher_is_better: true
+    units: rate
+    sample_size_caveats: "Typically 100-140 attempts per team per season"
+
+  red_zone_epa_per_play:
+    name: "Red Zone EPA/Play"
+    description: "Offensive EPA per play in the opponent's red zone (inside their 20)"
+    formula: "SUM(epa) / COUNT(*) WHERE posteam = team AND yardline_100 <= 20"
+    source_table: pbp_raw
+    source_columns: [epa, yardline_100, posteam]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Small sample (~50-80 plays per team per season) — high variance"
+
+  turnover_epa:
+    name: "Turnover EPA"
+    description: "Net EPA from turnovers forced minus turnovers committed"
+    formula: "SUM(epa WHERE turnover_committed) + SUM(epa WHERE turnover_forced)"
+    source_table: pbp_raw
+    source_columns: [epa, interception, fumble_lost]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Very noisy metric; 20-30 total turnover plays per team per season"
+
+  pace_seconds_per_play:
+    name: "Pace (Seconds/Play)"
+    description: "Average seconds elapsed between plays in non-two-minute drill situations"
+    formula: "AVG(play_clock_start) in neutral game situations"
+    source_table: pbp_raw
+    source_columns: [play_clock]
+    higher_is_better: false
+    units: seconds
+    sample_size_caveats: "Excludes end-of-half situations and garbage time"
+
+  pass_rate:
+    name: "Pass Rate"
+    description: "% of offensive plays that are pass attempts (including sacks)"
+    formula: "SUM(pass OR sack) / COUNT(*) WHERE posteam = team"
+    source_table: pbp_raw
+    source_columns: [pass, sack, posteam]
+    higher_is_better: null
+    units: rate
+    sample_size_caveats: null
+
+player_metrics:
+  qb_epa_per_dropback:
+    name: "QB EPA/Dropback"
+    description: "Average EPA per dropback including sacks"
+    formula: "SUM(epa) / COUNT(*) WHERE passer_player_id = id AND (pass = 1 OR sack = 1)"
+    source_table: pbp_raw
+    source_columns: [epa, pass, sack, passer_player_id]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Reliable at 100+ dropbacks; single-game sample is noise"
+
+  cpoe:
+    name: "Completion % Over Expected (CPOE)"
+    description: "Actual completion % minus model-expected completion %"
+    formula: "completions / attempts - expected_completion_pct"
+    source_table: pbp_raw
+    source_columns: [complete_pass, cp]
+    higher_is_better: true
+    units: rate (percentage points)
+    sample_size_caveats: "nflverse cp column; may not be available in all seasons"
+
+  target_share:
+    name: "Target Share"
+    description: "% of team pass attempts targeting this receiver"
+    formula: "player_targets / team_total_targets"
+    source_table: player_stats_raw
+    source_columns: [targets]
+    higher_is_better: null
+    units: rate
+    sample_size_caveats: "Meaningful at 5+ games; injured players understate"
+
+  air_yards_share:
+    name: "Air Yards Share"
+    description: "% of team air yards going to this receiver"
+    formula: "player_air_yards / team_total_air_yards"
+    source_table: pbp_raw
+    source_columns: [air_yards, receiver_player_id]
+    higher_is_better: null
+    units: rate
+    sample_size_caveats: null
+
+  rush_epa_per_carry:
+    name: "Rush EPA/Carry"
+    description: "Average EPA per rushing attempt for a ball carrier"
+    formula: "SUM(epa) / COUNT(*) WHERE rusher_player_id = id AND rush = 1"
+    source_table: pbp_raw
+    source_columns: [epa, rush, rusher_player_id]
+    higher_is_better: true
+    units: EPA
+    sample_size_caveats: "Noisy below 50 carries; OL blocking quality confounds result"

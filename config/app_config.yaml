@@ -1,0 +1,32 @@
+# App-wide settings
+
+app:
+  name: FourthandStats
+  version: "0.1.0"
+  port: 8501
+  dark_mode: true
+
+data:
+  default_seasons: [2024, 2025]
+  default_week_min: 1
+  default_week_max: 22  # 18 regular season + 4 postseason
+  auto_update_on_launch: false
+  auto_rebuild_after_update: false
+  current_season: 2025
+
+paths:
+  raw_data: "data/raw/nflverse"
+  processed_data: "data/processed"
+  cache: "data/cache"
+  manifests: "data/manifests"
+  saved_views: "saved_views"
+  exports: "exports"
+  logs: "logs"
+
+ui:
+  default_rows_per_page: 50
+  play_explorer_max_rows: 1000
+  heatmap_percentile_cutoffs: [10, 25, 50, 75, 90]
+  low_sample_min_plays: 50
+  low_sample_min_snaps: 100
+  low_sample_min_attempts: 50  # for QB metrics

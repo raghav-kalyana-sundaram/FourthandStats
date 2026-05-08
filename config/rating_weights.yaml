@@ -1,0 +1,99 @@
+# Rating formula weights — percentile composites
+# All weights within a group should sum to 1.0
+
+offensive_rating:
+  off_epa_per_play: 0.30
+  off_success_rate: 0.25
+  explosive_play_rate: 0.15
+  third_down_success_rate: 0.10
+  red_zone_epa_per_play: 0.10
+  turnover_epa: 0.10
+
+defensive_rating:
+  def_epa_per_play_allowed: 0.30
+  def_success_rate_allowed: 0.25
+  explosive_play_rate_allowed: 0.20
+  third_down_success_rate_allowed: 0.10
+  red_zone_epa_per_play_allowed: 0.10
+  turnover_epa_forced: 0.05
+
+passing_offense_rating:
+  pass_epa_per_play: 0.45
+  off_success_rate_pass: 0.25
+  explosive_play_rate_pass: 0.15
+  third_down_success_rate: 0.10
+  red_zone_epa_per_play: 0.05
+
+rushing_offense_rating:
+  rush_epa_per_play: 0.45
+  off_success_rate_rush: 0.30
+  explosive_play_rate_rush: 0.15
+  red_zone_epa_rush: 0.10
+
+passing_defense_rating:
+  pass_epa_per_play_allowed: 0.45
+  def_success_rate_pass_allowed: 0.25
+  explosive_play_rate_pass_allowed: 0.20
+  third_down_success_rate_allowed: 0.10
+
+rushing_defense_rating:
+  rush_epa_per_play_allowed: 0.45
+  def_success_rate_rush_allowed: 0.35
+  explosive_play_rate_rush_allowed: 0.20
+
+explosiveness_rating:
+  explosive_play_rate: 0.50
+  off_epa_per_play: 0.30
+  explosive_play_rate_pass: 0.20
+
+explosive_prevention_rating:
+  explosive_play_rate_allowed: 0.50
+  def_epa_per_play_allowed: 0.30
+  explosive_play_rate_rush_allowed: 0.20
+
+situational_rating:
+  third_down_success_rate: 0.35
+  red_zone_epa_per_play: 0.30
+  third_down_success_rate_allowed: 0.20
+  red_zone_epa_per_play_allowed: 0.15
+
+recent_form_rating:
+  # Rolling last-5-game window
+  off_epa_per_play_l5: 0.35
+  def_epa_per_play_allowed_l5: 0.35
+  off_success_rate_l5: 0.15
+  def_success_rate_allowed_l5: 0.15
+
+overall_rating:
+  offensive_rating: 0.35
+  defensive_rating: 0.35
+  situational_rating: 0.15
+  recent_form_rating: 0.15
+
+# Player rating weights
+
+player_qb_production_rating:
+  epa_per_dropback: 0.40
+  pass_success_rate: 0.25
+  td_rate: 0.15
+  cpoe: 0.20
+
+player_qb_efficiency_rating:
+  epa_per_dropback: 0.45
+  cpoe: 0.30
+  sack_rate: -0.15  # negative: lower sack rate = better
+  int_rate: -0.10
+
+player_rb_production_rating:
+  rush_epa_per_carry: 0.35
+  rush_success_rate: 0.25
+  explosive_rate_rush: 0.15
+  target_share: 0.15
+  yac: 0.10
+
+player_wr_te_production_rating:
+  target_share: 0.25
+  air_yards_share: 0.20
+  epa_per_target: 0.30
+  yac: 0.15
+  explosive_rate_rec: 0.10

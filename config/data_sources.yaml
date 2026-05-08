@@ -1,0 +1,110 @@
+# Data source registry — one entry per nflreadpy dataset
+
+sources:
+  pbp:
+    name: "Play-by-Play"
+    library: nflreadpy
+    function: load_pbp
+    available_seasons: "1999-present"
+    license_note: "nflverse open data, free for non-commercial use"
+    quality_level: high
+    notes: "Core source for EPA, WPA, success rate, play type"
+
+  schedules:
+    name: "Schedules"
+    library: nflreadpy
+    function: load_schedules
+    available_seasons: "1999-present"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Game results, home/away, final scores, spread"
+
+  rosters:
+    name: "Rosters"
+    library: nflreadpy
+    function: load_rosters
+    available_seasons: "2001-present"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Player-team-season mappings; use weekly variant for mid-season moves"
+
+  player_stats:
+    name: "Player Stats (Weekly)"
+    library: nflreadpy
+    function: load_player_stats
+    available_seasons: "1999-present"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Aggregated weekly box scores for skill positions"
+
+  snap_counts:
+    name: "Snap Counts"
+    library: nflreadpy
+    function: load_snap_counts
+    available_seasons: "2012-present"
+    license_note: "nflverse open data"
+    quality_level: medium
+    notes: "Offensive + defensive snap shares; pre-2012 unavailable"
+
+  injuries:
+    name: "Injuries"
+    library: nflreadpy
+    function: load_injuries
+    available_seasons: "2009-present"
+    license_note: "nflverse open data"
+    quality_level: medium
+    notes: "Weekly injury reports"
+
+  depth_charts:
+    name: "Depth Charts"
+    library: nflreadpy
+    function: load_depth_charts
+    available_seasons: "2001-present"
+    license_note: "nflverse open data"
+    quality_level: medium
+    notes: "Position depth by week"
+
+  participation:
+    name: "Participation (Personnel)"
+    library: nflreadpy
+    function: load_participation
+    available_seasons: "limited"
+    license_note: "nflverse open data"
+    quality_level: low
+    notes: "Personnel groupings — spotty availability, use opportunistically"
+
+  combine:
+    name: "NFL Combine"
+    library: nflreadpy
+    function: load_combine
+    available_seasons: "1987-present"
+    license_note: "nflverse open data"
+    quality_level: medium
+    notes: "Athletic testing; many missing values for non-skill positions"
+
+  draft_picks:
+    name: "Draft Picks"
+    library: nflreadpy
+    function: load_draft_picks
+    available_seasons: "1985-present"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Round, pick, team, position, player"
+
+  players_meta:
+    name: "Players Metadata"
+    library: nflreadpy
+    function: load_players
+    available_seasons: "all-time"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Player IDs, bio, position, college"
+
+  teams_meta:
+    name: "Teams Metadata"
+    library: nflreadpy
+    function: load_teams
+    available_seasons: "all-time"
+    license_note: "nflverse open data"
+    quality_level: high
+    notes: "Team abbreviations, full names, conference, division, colors"

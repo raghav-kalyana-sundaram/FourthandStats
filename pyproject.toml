@@ -1,0 +1,44 @@
+[project]
+name = "fourthandstats"
+version = "0.1.0"
+description = "Local-first NFL analytics workbench for team identity, player comparison, play-by-play exploration, and instant visualizations"
+authors = [{ name = "Raghav Kalyan" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []  # managed via requirements.txt
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "TID"]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "B008",   # do not perform function calls in default arguments
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["fourthandstats"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = ["-ra", "--strict-markers"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests that require downloaded data",
+]
+
+[tool.mypy]
+python_version = "3.11"
+strict = false
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
