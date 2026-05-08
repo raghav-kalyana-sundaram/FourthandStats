@@ -1,0 +1,78 @@
+{
+  "loaded_seasons": [
+    2024,
+    2025
+  ],
+  "latest_loaded_season": 2025,
+  "latest_loaded_week": null,
+  "includes_playoffs": false,
+  "last_data_update": "2026-05-08T20:39:06.087796Z",
+  "last_metric_rebuild": null,
+  "datasets": {
+    "teams_meta": {
+      "available": true,
+      "seasons": [],
+      "row_count": 36,
+      "last_updated": "2026-05-08T20:38:38.910847Z",
+      "reason": null
+    },
+    "schedules": {
+      "available": true,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "row_count": 285,
+      "last_updated": "2026-05-08T20:39:05.242635Z",
+      "reason": null
+    },
+    "players_meta": {
+      "available": true,
+      "seasons": [],
+      "row_count": 24740,
+      "last_updated": "2026-05-08T20:38:45.339727Z",
+      "reason": null
+    },
+    "rosters": {
+      "available": true,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "row_count": 3216,
+      "last_updated": "2026-05-08T20:39:05.516194Z",
+      "reason": null
+    },
+    "snap_counts": {
+      "available": true,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "row_count": 26615,
+      "last_updated": "2026-05-08T20:39:06.087786Z",
+      "reason": null
+    },
+    "player_stats": {
+      "available": true,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "row_count": 18981,
+      "last_updated": "2026-05-08T20:39:05.824019Z",
+      "reason": null
+    },
+    "pbp": {
+      "available": true,
+      "seasons": [
+        2024,
+        2025
+      ],
+      "row_count": 98263,
+      "last_updated": "2026-05-08T20:38:55.461470Z",
+      "reason": null
+    }
+  },
+  "warnings": []
+}

@@ -31,13 +31,14 @@ FourthandStats pulls open-source NFL data (via [nflverse](https://nflverse.nflve
 git clone https://github.com/<your-username>/FourthandStats.git
 cd FourthandStats
 
-# 2. Create a virtual environment (Python 3.11 required)
-python3.11 -m venv .venv
+# 2. Create a virtual environment (uses uv to avoid macOS pip/ensurepip issues)
+# Install uv first if needed: brew install uv
+uv venv --python 3.11 .venv
 source .venv/bin/activate       # macOS / Linux
 # .\.venv\Scripts\activate      # Windows
 
 # 3. Install dependencies
-pip install -r requirements.txt
+uv pip install -r requirements.txt
 
 # 4. Download NFL data (2024–2025 seasons takes ~2–5 min on first run)
 python scripts/update_data.py --seasons 2024 2025

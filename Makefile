@@ -1,9 +1,9 @@
 .PHONY: install update-data rebuild rebuild-all validate app test lint format typecheck clean help
 
 PYTHON := python3
+UV := uv
 VENV := .venv
-VENV_PYTHON := $(VENV)/bin/python
-VENV_PIP := $(VENV)/bin/pip
+VENV_PYTHON := $(VENV)/bin/python3
 
 help:
 	@echo ""
@@ -23,9 +23,8 @@ help:
 	@echo ""
 
 install:
-	$(PYTHON) -m venv $(VENV)
-	$(VENV_PIP) install --upgrade pip
-	$(VENV_PIP) install -r requirements-dev.txt
+	$(UV) venv --python 3.11 $(VENV)
+	$(UV) pip install -r requirements-dev.txt
 	@echo ""
 	@echo "✓ Virtual environment ready."
 	@echo "  Activate with: source .venv/bin/activate"
@@ -49,10 +48,10 @@ test:
 	$(VENV_PYTHON) -m pytest tests/ -v
 
 lint:
-	$(VENV_PYTHON) -m ruff check .
+	$(UV) run ruff check .
 
 format:
-	$(VENV_PYTHON) -m black .
+	$(UV) run black .
 
 typecheck:
 	$(VENV_PYTHON) -m mypy src/

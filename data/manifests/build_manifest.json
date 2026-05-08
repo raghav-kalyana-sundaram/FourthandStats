@@ -1,0 +1,53 @@
+{
+  "last_build": "2026-05-08T20:43:02.963967Z",
+  "tables": {
+    "team_season_summary": {
+      "row_count": 64,
+      "build_time": "2026-05-08T20:43:02.961879Z",
+      "source_files": [
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_season_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/play_index.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_weekly_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/metric_percentiles.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/player_season_summary.parquet"
+      ],
+      "source_hash": null
+    },
+    "team_weekly_summary": {
+      "row_count": 1140,
+      "build_time": "2026-05-08T20:43:02.963334Z",
+      "source_files": [
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_season_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/play_index.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_weekly_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/metric_percentiles.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/player_season_summary.parquet"
+      ],
+      "source_hash": null
+    },
+    "player_season_summary": {
+      "row_count": 1262,
+      "build_time": "2026-05-08T20:43:02.963670Z",
+      "source_files": [
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_season_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/play_index.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_weekly_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/metric_percentiles.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/player_season_summary.parquet"
+      ],
+      "source_hash": null
+    },
+    "play_index": {
+      "row_count": 95348,
+      "build_time": "2026-05-08T20:43:02.963960Z",
+      "source_files": [
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_season_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/play_index.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/team_weekly_summary.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/metric_percentiles.parquet",
+        "/Users/raghavkalyan/Documents/Projects/football-metrics/FourthandStats/data/processed/player_season_summary.parquet"
+      ],
+      "source_hash": null
+    }
+  }
+}
